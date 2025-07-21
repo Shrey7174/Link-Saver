@@ -20,7 +20,6 @@ export default function Login() {
     };
     checkUser();
 
-    // Clear credentials when component unmounts (optional but clean)
     return () => {
       setEmail('');
       setPassword('');

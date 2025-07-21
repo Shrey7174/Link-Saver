@@ -56,9 +56,14 @@ export default function Dashboard() {
 
       if (error) throw new Error(error.message);
       if (data) setBookmarks(data);
-    } catch (err: any) {
-      console.error('❌ Fetch failed:', err.message);
-    } finally {
+    } catch (err) {
+  if (err instanceof Error) {
+    console.error('❌ Fetch failed:', err.message);
+  } else {
+    console.error('❌ Fetch failed:', err);
+  }
+}
+ finally {
       setLoading(false);
     }
   };
@@ -114,9 +119,14 @@ export default function Dashboard() {
       const { error } = await supabase.from('bookmarks').delete().eq('id', id);
       if (error) throw new Error(error.message);
       fetchBookmarks();
-    } catch (err: any) {
-      alert('❌ Failed to delete: ' + err.message);
-    }
+    } catch (err) {
+  if (err instanceof Error) {
+    alert('❌ Failed to delete: ' + err.message);
+  } else {
+    alert('❌ Failed to delete.');
+  }
+}
+
   };
 
   const reorder = async (result: DropResult) => {

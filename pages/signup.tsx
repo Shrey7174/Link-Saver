@@ -1,12 +1,9 @@
-// pages/signup.tsx
-import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { supabase } from '../lib/supabaseClient';
 import AuthLayout from '../components/AuthLayout';
 import Link from 'next/link';
 
 export default function Signup() {
-  const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -44,7 +41,7 @@ export default function Signup() {
       return;
     }
 
-    const { data, error } = await supabase.auth.signUp({
+    const { error } = await supabase.auth.signUp({
       email,
       password,
     });
