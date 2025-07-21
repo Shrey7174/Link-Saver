@@ -1,36 +1,111 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Link Saver + Auto-Summary Web App
 
-## Getting Started
+A full-stack productivity tool to save, manage, and auto-summarize bookmarks using Supabase, Next.js, TailwindCSS, and Jina AI.
 
-First, run the development server:
+## Live Demo
 
-```bash
+- Live Link: https://cerulean-crepe-ac4161.netlify.app
+- GitHub Repo: https://github.com/Shrey7174/Link-Saver
+
+## Screenshots
+
+> Add 2-3 PNG images in `/screenshots` folder and link them here:
+
+
+
+## Tech Stack
+
+| Layer        | Technology Used               |
+|--------------|-------------------------------|
+| Frontend     | Next.js, TailwindCSS          |
+| Backend/Auth | Supabase (PostgreSQL + Auth)  |
+| AI Summary   | Jina AI                       |
+| DnD          | @hello-pangea/dnd             |
+| Hosting      | Netlify                       |
+
+## Features
+
+- User authentication (Supabase)
+- Save bookmarks with title, favicon, and summary
+- Auto-generate summaries with Jina AI
+- Add tags to bookmarks
+- Filter/search by tags
+- Drag-and-drop reorder
+- Fully responsive design with dark mode
+
+## Screenshots
+
+> These images are located inside the `/images/` directory.
+
+### Signup & Login
+
+| Signup                             | Login                              |
+|-----------------------------------|------------------------------------|
+| ![](./images/signup.png)          | ![](./images/login.png)            |
+
+### 🏠 Dashboard (Bookmarks & Tag Filter)
+
+| Light Mode                         | Dark Mode                          |
+|-----------------------------------|------------------------------------|
+| ![](./images/dashboard_lightmode.png) | ![](./images/Dashboard.png)        |
+
+
+
+
+## Project Structure
+
+/pages → App routes (Next.js)
+/components → Reusable components
+/lib → Supabase and utility functions
+/styles → Tailwind styling
+
+
+## Setup Instructions
+
+1. Clone the repo:
+
+git clone https://github.com/Shrey7174/Link-Saver.git
+cd link-saver-app
+
+
+2. Install dependencies:
+
+npm install
+
+
+3. Add environment variables:
+
+Create a `.env.local` file:
+
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_key
+NEXT_PUBLIC_JINA_API_KEY=your_jina_api_key
+
+
+4. Run locally:
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Tests
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Component tests using @testing-library/react
+- Bookmark utility test cases
+- Sample unit tests included
 
-## Learn More
+## What I'd Do Next
 
-To learn more about Next.js, take a look at the following resources:
+- Add social login (Google, GitHub)
+- Export/import bookmark list
+- Add preview card (image, site info)
+- Improve AI summary fallback with OpenAI
+- Enable team/workspace-based sharing
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Time Spent
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Total: ~11 hours
+  - Supabase integration: 1h
+  - Link CRUD + Summary: 2h
+  - UI, DnD, Filters: 3h
+  - Testing & Cleanup: 3h
+  - Deployment + Docs: 2h
