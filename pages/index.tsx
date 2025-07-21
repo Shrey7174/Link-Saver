@@ -5,6 +5,8 @@ import { supabase } from '../lib/supabaseClient';
 import { DragDropContext, Droppable, Draggable, DropResult } from '@hello-pangea/dnd';
 import { useTheme } from 'next-themes';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
+
 
 interface Bookmark {
   id: string;
@@ -171,12 +173,13 @@ export default function Dashboard() {
           🔗 Link Saver
         </h1>
         <div className="flex gap-2 flex-wrap text-sm items-center">
-          <a
-            href="/guide"
-            className="hover:bg-blue-100 dark:hover:bg-gray-700 px-2 py-1 rounded text-blue-600 dark:text-blue-300 border border-blue-300 dark:border-blue-600"
-          >
-            Guide
-          </a>
+
+            <Link
+               href="/guide"
+               className="hover:bg-blue-100 dark:hover:bg-gray-700 px-2 py-1 rounded text-blue-600 dark:text-blue-300 border border-blue-300 dark:border-blue-600"
+                >
+                 Guide
+                </Link>
           <button
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
             className="hover:bg-blue-100 dark:hover:bg-gray-700 px-2 py-1 rounded"
