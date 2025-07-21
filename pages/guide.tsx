@@ -23,12 +23,12 @@ export default function GuidePage() {
         <div className="w-full max-w-4xl bg-white dark:bg-gray-950 p-6 rounded-2xl shadow-lg border border-gray-300 dark:border-gray-800">
           <h2 className="text-3xl font-bold mb-4 text-green-600">📘 LinkSaver Guide</h2>
           <ul className="list-disc pl-5 space-y-3 text-base leading-relaxed">
-            <li><strong>Save Links:</strong> Paste any URL, hit save. We’ll fetch the title, favicon, and summary automatically.</li>
+            <li><strong>Save Links:</strong> Paste any URL, hit save. We&apos;ll fetch the title, favicon, and summary automatically.</li>
             <li><strong>Tagging:</strong> Assign tags to organize your bookmarks. Use the tag search bar to filter them.</li>
             <li><strong>Reorder:</strong> Drag and drop bookmarks to reorder them as per your preference.</li>
             <li><strong>AI Summary:</strong> Powered by Jina AI, each saved link auto-generates a smart summary.</li>
             <li><strong>Responsive UI:</strong> Works seamlessly on desktop and mobile. Dark mode supported!</li>
-            <li><strong>Logout:</strong> Securely logs you </li>
+            <li><strong>Logout:</strong> Securely logs you out of your session to protect your data.</li>
           </ul>
         </div>
       </div>

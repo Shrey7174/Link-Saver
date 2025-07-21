@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 import { supabase } from '@/../lib/supabaseClient';
 import { DragDropContext, Droppable, Draggable, DropResult } from '@hello-pangea/dnd';
@@ -60,7 +62,7 @@ function Dashboard() {
       setAuthChecked(true);
     };
     checkUser();
-  }, []);
+  }, [router]);
 
   const saveBookmark = async () => {
     setError('');
@@ -150,34 +152,34 @@ function Dashboard() {
 
   return (
     <div className="min-h-screen pt-4 px-4 md:px-6 bg-gradient-to-r from-gray-100 to-blue-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white">
-      {/* Dashboard Navbar */}
-<div className="flex justify-between items-center mb-6 border-b border-gray-300 dark:border-gray-700 pb-4 flex-wrap gap-2">
-  <h1 className="text-3xl font-extrabold text-blue-700 dark:text-blue-400">
-    🔗 Link Saver
-  </h1>
+   
+      {/* Navbar */}
+      <div className="flex justify-between items-center mb-6 border-b border-gray-300 dark:border-gray-700 pb-4 flex-wrap gap-2">
+        <h1 className="text-3xl font-extrabold text-blue-700 dark:text-blue-400">
+          🔗 Link Saver
+        </h1>
 
-  <div className="flex gap-2 flex-wrap text-sm items-center">
-    <a
-      href="/guide"
-      className="hover:bg-blue-100 dark:hover:bg-gray-700 px-2 py-1 rounded text-blue-600 dark:text-blue-300 border border-blue-300 dark:border-blue-600"
-    >
-      Guide
-    </a>
-    <button
-      onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      className="hover:bg-blue-100 dark:hover:bg-gray-700 px-2 py-1 rounded"
-    >
-       {theme === 'dark' ? 'Light' : 'Dark'} Mode
-    </button>
-    <button
-      onClick={handleLogout}
-      className="text-red-600 hover:bg-red-100 dark:hover:bg-red-700 px-2 py-1 rounded"
-    >
-      Logout
-    </button>
-  </div>
-</div>
-
+        <div className="flex gap-2 flex-wrap text-sm items-center">
+          <a
+            href="/guide"
+            className="hover:bg-blue-100 dark:hover:bg-gray-700 px-2 py-1 rounded text-blue-600 dark:text-blue-300 border border-blue-300 dark:border-blue-600"
+          >
+            Guide
+          </a>
+          <button
+            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            className="hover:bg-blue-100 dark:hover:bg-gray-700 px-2 py-1 rounded"
+          >
+            {theme === 'dark' ? 'Light' : 'Dark'} Mode
+          </button>
+          <button
+            onClick={handleLogout}
+            className="text-red-600 hover:bg-red-100 dark:hover:bg-red-700 px-2 py-1 rounded"
+          >
+            Logout
+          </button>
+        </div>
+      </div>
 
       {/* Inputs */}
       <div className="flex flex-col md:flex-row gap-2 mb-4">
@@ -201,10 +203,10 @@ function Dashboard() {
         </button>
       </div>
 
-      {/* Error */}
+      {/* Error Message */}
       {error && <p className="text-red-500 text-sm mb-4 ml-1">{error}</p>}
 
-      {/* Tag Search Bar */}
+      {/* Tag Filter */}
       <div className="mb-6 flex flex-col sm:flex-row gap-2">
         <input
           type="text"
@@ -227,7 +229,7 @@ function Dashboard() {
         </button>
       </div>
 
-      {/* Bookmarks List */}
+      {/* Bookmarks */}
       <DragDropContext onDragEnd={reorder}>
         <Droppable droppableId="bookmarks">
           {(provided) => (
@@ -244,15 +246,15 @@ function Dashboard() {
                       <div className="flex justify-between flex-wrap gap-2">
                         <div className="flex gap-3 items-start">
                           <img
-                              src={bm.favicon}
-                              className="w-5 h-5 mt-1"
-                              alt="favicon"
-                              onError={(e) => {
-                                e.currentTarget.onerror = null; 
-                                e.currentTarget.src = "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg";
-                              }}
-                            />
-
+                            src={bm.favicon}
+                            className="w-5 h-5 mt-1"
+                            alt="favicon"
+                            onError={(e) => {
+                              e.currentTarget.onerror = null;
+                              e.currentTarget.src =
+                                'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg';
+                            }}
+                          />
                           <div>
                             <a
                               href={bm.url}
