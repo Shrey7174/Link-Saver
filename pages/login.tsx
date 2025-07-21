@@ -19,6 +19,12 @@ export default function Login() {
       else setLoading(false);
     };
     checkUser();
+
+    // Clear credentials when component unmounts (optional but clean)
+    return () => {
+      setEmail('');
+      setPassword('');
+    };
   }, [router]);
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -43,8 +49,9 @@ export default function Login() {
           <form onSubmit={handleLogin} autoComplete="off">
             <input
               type="email"
-              name="user_email"
+              name="email"
               placeholder="Email"
+              autoComplete="new-email"
               required
               className="w-full mb-4 px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:text-white"
               onChange={(e) => setEmail(e.target.value)}
@@ -52,10 +59,10 @@ export default function Login() {
             />
             <input
               type="password"
-              name="user_password"
+              name="password"
               placeholder="Password"
+              autoComplete="new-password"
               required
-              autoComplete="current-password"
               className="w-full mb-4 px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:text-white"
               onChange={(e) => setPassword(e.target.value)}
               value={password}
