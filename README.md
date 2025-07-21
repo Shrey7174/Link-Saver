@@ -7,11 +7,6 @@ A full-stack productivity tool to save, manage, and auto-summarize bookmarks usi
 - Live Link: https://cerulean-crepe-ac4161.netlify.app
 - GitHub Repo: https://github.com/Shrey7174/Link-Saver
 
-## Screenshots
-
-> Add 2-3 PNG images in `/screenshots` folder and link them here:
-
-
 
 ## Tech Stack
 
@@ -43,7 +38,7 @@ A full-stack productivity tool to save, manage, and auto-summarize bookmarks usi
 |-----------------------------------|------------------------------------|
 | ![](./images/signup.png)          | ![](./images/login.png)            |
 
-### 🏠 Dashboard (Bookmarks & Tag Filter)
+###  Dashboard (Bookmarks & Tag Filter)
 
 | Light Mode                         | Dark Mode                          |
 |-----------------------------------|------------------------------------|
@@ -60,38 +55,39 @@ A full-stack productivity tool to save, manage, and auto-summarize bookmarks usi
 /styles → Tailwind styling
 
 
-## Setup Instructions
+## 🛠️ Setup (Local Development)
 
-1. Clone the repo:
+### 1. Clone the repo
 
-git clone https://github.com/Shrey7174/Link-Saver.git
+```bash
+git clone https://github.com/your-username/link-saver-app.git
 cd link-saver-app
+```
 
+### 2. Install dependencies
 
-2. Install dependencies:
-
+```bash
 npm install
+```
 
+### 3. Add environment variables
 
-3. Add environment variables:
+```bash
+touch .env.local
+```
 
-Create a `.env.local` file:
+Then open `.env.local` and add:
 
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_key
-NEXT_PUBLIC_JINA_API_KEY=your_jina_api_key
+```bash
+NEXT_PUBLIC_SUPABASE_URL=your-url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+```
 
+### 4. Run the app
 
-4. Run locally:
-
+```bash
 npm run dev
-
-
-## Tests
-
-- Component tests using @testing-library/react
-- Bookmark utility test cases
-- Sample unit tests included
+```
 
 ## What I'd Do Next
 
@@ -103,9 +99,26 @@ npm run dev
 
 ## Time Spent
 
-- Total: ~11 hours
-  - Supabase integration: 1h
-  - Link CRUD + Summary: 2h
-  - UI, DnD, Filters: 3h
-  - Testing & Cleanup: 3h
-  - Deployment + Docs: 2h
+#| Task                  | Duration   |
+| --------------------- | ---------- |
+| Supabase Integration  | 1 hr       |
+| Link CRUD + Summaries | 2 hrs      |
+| UI + Drag & Drop      | 3 hrs      |
+| Testing & Cleanup     | 2 hrs      |
+| Deployment + Docs     | 3 hrs      |
+| **Total**             | **11 hrs** |
+
+
+## Notes
+
+    Fully functional and deployed on Netlify for production use.
+
+    Responsive, user-friendly interface built with modern frameworks.
+
+    Readable, modular code structure suitable for teams.
+
+
+## 🧑‍💻 Author
+
+  Shreyansh
+  

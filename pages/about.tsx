@@ -10,7 +10,7 @@ export default function AboutPage() {
       {/* Main content */}
       <main className="flex-grow flex items-center justify-center px-4 py-12">
         <div className="w-full max-w-4xl p-8 bg-white dark:bg-gray-950 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-800">
-          <h2 className="text-3xl font-bold mb-6 text-green-600">🚀 About LinkSaver</h2>
+          <h2 className="text-3xl font-bold mb-6 text-green-600">About LinkSaver</h2>
           <p className="mb-4 text-lg leading-relaxed">
             <strong>LinkSaver</strong> is a full-stack productivity app built to help you save, organize, and summarize web links in one clean, intuitive interface.
           </p>
