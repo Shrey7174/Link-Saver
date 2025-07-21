@@ -27,7 +27,7 @@ export default function AboutPage() {
           </ul>
 
           <p className="mt-6 leading-relaxed">
-            Whether you're a student, researcher, or lifelong learner, LinkSaver helps you stay organized and focused. No clutter, just clarity.
+            Whether you&apos;re a student, researcher, or lifelong learner, LinkSaver helps you stay organized and focused. No clutter, just clarity.
           </p>
         </div>
       </main>

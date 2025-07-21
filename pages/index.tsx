@@ -1,11 +1,10 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { supabase } from '@/../lib/supabaseClient';
+import { supabase } from '../lib/supabaseClient';
 import { DragDropContext, Droppable, Draggable, DropResult } from '@hello-pangea/dnd';
 import { useTheme } from 'next-themes';
 import { useRouter } from 'next/router';
-import dynamic from 'next/dynamic';
 
 interface Bookmark {
   id: string;
@@ -18,7 +17,7 @@ interface Bookmark {
   order: number;
 }
 
-function Dashboard() {
+export default function Dashboard() {
   const [url, setUrl] = useState('');
   const [tagsInput, setTagsInput] = useState('');
   const [bookmarks, setBookmarks] = useState<Bookmark[]>([]);
@@ -29,6 +28,19 @@ function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [authChecked, setAuthChecked] = useState(false);
+
+  useEffect(() => {
+    const checkUser = async () => {
+      const { data } = await supabase.auth.getUser();
+      if (!data.user) {
+        router.replace('/login');
+      } else {
+        await fetchBookmarks();
+      }
+      setAuthChecked(true);
+    };
+    checkUser();
+  }, [router]);
 
   const fetchBookmarks = async () => {
     try {
@@ -51,21 +63,8 @@ function Dashboard() {
     }
   };
 
-  useEffect(() => {
-    const checkUser = async () => {
-      const { data } = await supabase.auth.getUser();
-      if (!data.user) {
-        router.replace('/login');
-      } else {
-        fetchBookmarks();
-      }
-      setAuthChecked(true);
-    };
-    checkUser();
-  }, [router]);
-
   const saveBookmark = async () => {
-    setError('');
+    setError(null);
     if (!url) {
       setError('Please enter a URL.');
       return;
@@ -79,7 +78,10 @@ function Dashboard() {
       const favicon = `${parsedUrl.origin}/favicon.ico`;
       const user = (await supabase.auth.getUser()).data.user;
 
-      const tagList = tagsInput.split(',').map((t) => t.trim()).filter(Boolean);
+      const tagList = tagsInput
+        .split(',')
+        .map((t) => t.trim().toLowerCase())
+        .filter(Boolean);
 
       const { error: insertError } = await supabase.from('bookmarks').insert([
         {
@@ -141,7 +143,7 @@ function Dashboard() {
     selectedTag ? bm.tags?.includes(selectedTag.toLowerCase()) : true
   );
 
-  if (!authChecked || loading)
+  if (!authChecked || loading) {
     return (
       <div className="h-screen flex items-center justify-center bg-white dark:bg-black">
         <p className="text-lg text-gray-700 dark:text-gray-300 animate-pulse">
@@ -149,16 +151,15 @@ function Dashboard() {
         </p>
       </div>
     );
+  }
 
   return (
     <div className="min-h-screen pt-4 px-4 md:px-6 bg-gradient-to-r from-gray-100 to-blue-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white">
-   
       {/* Navbar */}
       <div className="flex justify-between items-center mb-6 border-b border-gray-300 dark:border-gray-700 pb-4 flex-wrap gap-2">
         <h1 className="text-3xl font-extrabold text-blue-700 dark:text-blue-400">
           🔗 Link Saver
         </h1>
-
         <div className="flex gap-2 flex-wrap text-sm items-center">
           <a
             href="/guide"
@@ -181,7 +182,7 @@ function Dashboard() {
         </div>
       </div>
 
-      {/* Inputs */}
+      {/* URL + Tags Input */}
       <div className="flex flex-col md:flex-row gap-2 mb-4">
         <input
           className="flex-1 p-2 border rounded shadow-sm"
@@ -203,10 +204,10 @@ function Dashboard() {
         </button>
       </div>
 
-      {/* Error Message */}
+      {/* Error Display */}
       {error && <p className="text-red-500 text-sm mb-4 ml-1">{error}</p>}
 
-      {/* Tag Filter */}
+      {/* Tag Search */}
       <div className="mb-6 flex flex-col sm:flex-row gap-2">
         <input
           type="text"
@@ -229,7 +230,7 @@ function Dashboard() {
         </button>
       </div>
 
-      {/* Bookmarks */}
+      {/* Bookmark List */}
       <DragDropContext onDragEnd={reorder}>
         <Droppable droppableId="bookmarks">
           {(provided) => (
@@ -298,5 +299,3 @@ function Dashboard() {
     </div>
   );
 }
-
-export default dynamic(() => Promise.resolve(Dashboard), { ssr: false });
