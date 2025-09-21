@@ -97,18 +97,6 @@ npm run dev
 - Improve AI summary fallback with OpenAI
 - Enable team/workspace-based sharing
 
-## Time Spent
-
-#| Task                  | Duration   |
-| --------------------- | ---------- |
-| Supabase Integration  | 1 hr       |
-| Link CRUD + Summaries | 2 hrs      |
-| UI + Drag & Drop      | 3 hrs      |
-| Testing & Cleanup     | 2 hrs      |
-| Deployment + Docs     | 3 hrs      |
-| **Total**             | **11 hrs** |
-
-
 ## Notes
 
     Fully functional and deployed on Netlify for production use.
